@@ -47,6 +47,8 @@ class FatSecret
         f = food(id)["food"]
         s = f["servings"]["serving"]
 
+        s = [s] unless s.kind_of? Array
+
         carbs_per_cup = nil
 
         cups_servings = s.select do |serving|
