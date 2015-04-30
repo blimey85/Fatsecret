@@ -55,15 +55,15 @@ class FatSecret
           serving["serving_description"].include?("1/4 cup")
         end
 
-        if cups_servings.first["serving_description"].include?("1 cup")
+        if cups_servings.any? && cups_servings.first["serving_description"].include?("1 cup")
           carbs_per_cup = cups_servings.first["carbohydrate"].to_i
         end
 
-        if cups_servings.first["serving_description"].include?("1/2 cup")
+        if cups_servings.any? && cups_servings.first["serving_description"].include?("1/2 cup")
           carbs_per_cup = cups_servings.first["carbohydrate"].to_i * 2
         end
 
-        if cups_servings.first["serving_description"].include?("1/4 cup")
+        if cups_servings.any? && cups_servings.first["serving_description"].include?("1/4 cup")
           carbs_per_cup = cups_servings.first["carbohydrate"].to_i * 4
         end
 
