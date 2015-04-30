@@ -67,7 +67,14 @@ class FatSecret
           carbs_per_cup = cups_servings.first["carbohydrate"].to_i * 4
         end
 
-        carbs_per_cup
+        {
+          "food" => {
+            "food_id" => f["food_id"],
+            "food_name" => f["food_name"],
+            "carbohydrate" => carbs_per_cup,
+            "measurement" => "1 cup"
+          }
+        }
 
       end
     end
