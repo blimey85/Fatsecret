@@ -42,7 +42,6 @@ class FatSecret
         get(query)
       end
 
-
       def carbs_per_cup_food(id)
         f = food(id)["food"]
         s = f["servings"]["serving"]
@@ -78,6 +77,29 @@ class FatSecret
           }
         }
 
+      end
+
+      # Returns an array of servings and related carbs
+      def carbs_per_servings(id)
+        f = food(id)["food"]
+        s = f["servings"]["serving"]
+
+        s = [s] unless s.kind_of? Array
+
+        servings = s.map do |serving|
+          {
+            "serving_description" => serving["serving_description"],
+            "carbohydrate" => serving["carbohydrate"]
+          }
+        end
+
+        {
+          "food" => {
+            "food_id"     => f["food_id"],
+            "food_name"   => f["food_name"],
+            "servings"    => servings
+          }
+        }
       end
     end
 
